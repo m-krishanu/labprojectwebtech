@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>index</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="icon" type="image/png" href="images/logo.png"/>
+  <link rel="icon" href="img/favicon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="" />
+  <meta property="og:title" content="40π - A Spotify Clone" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="" />
+  <meta property="og:description" content="" />
+  <meta property="og:image" content="" />
+  <meta name="twitter:card" content="" />
+  <meta name="twitter:site" content="" />
+  <meta name="twitter:title" content="" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:image" content="" />
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* Hide scrollbar */
+    }
+
+    /* Style for the video */
+    video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1; /* Ensure video is behind other content */
+      filter: brightness(50%);
+    }
+    .centered-quote {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white; /* Adjust color as needed */
+  font-size: 24px; /* Adjust font size as needed */
+  font-family: cursive;
+}
+
+
+    /* Positioning for the bottom section */
+    .bottom {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+      color: #fff; /* Text color */
+      padding: 10px; /* Padding for content */
+      box-sizing: border-box; /* Include padding in element width */
+      z-index: 1; /* Ensure bottom section is above the video */
+    }
+    .search {
+    position: relative;
+    display: inline-block;
+    margin: 20px;
+}
+
+.srch {
+  padding: 8px 20px 8px 8px;
+    width: 150px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0; /* Align the dropdown to the right */
+  background-color: #f9f9f9;
+  min-width: 120px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+}
+
+.dropdown-content a:hover {
+    background-color:#c9f7bd;
+}
+
+.show {
+    display: block;
+}
+
+
+
+.btn:hover{
+    color: #000;
+}
+.btn:focus{
+    outline: none;
+}
+
+.srch:focus{
+    outline: none;}
+
+.btn {
+  /* Your existing styles */
+  padding: 10px 10px; /* Adjust padding for button size */
+  background-color: #007bff; /* Default background color */
+  color: #fff; /* Default text color */
+  border: none; /* Remove button border */
+  cursor: pointer; /* Add pointer cursor on hover */
+  transition: background-color 0.3s; /* Add transition for smooth color change */
+
+  /* Shift the button 10 pixels to the left */
+  margin-right: -10px;
+}
+
+.btn:hover {
+  background-color: #0056b3; /* Change background color on hover */
+}
+
+.butn {
+  /* Your existing styles */
+  padding: 10px 20px; /* Adjust padding for button size */
+  background-color: #007bff; /* Default background color */
+  color: #fff; /* Default text color */
+  border: none; /* Remove button border */
+  cursor: pointer; /* Add pointer cursor on hover */
+  transition: background-color 0.3s; /* Add transition for smooth color change */
+
+  /* Shift the button 10 pixels to the left */
+  margin-left: -30px;
+}
+
+.butn:hover {
+  background-color: #0056b3; /* Change background color on hover */
+}
+.background-photo {
+    background-image: url('123.jpeg'); /* Replace 'path/to/your/background/photo.jpg' with the actual path to your background photo */
+    background-size: cover; /* Cover the entire container with the background image */
+    background-position: center; /* Center the background image */
+    width: 100vw; /* Set width to 100% of viewport width */
+    height: 100vh; /* Set height to 100% of viewport height */
+}
+
+
+    
+  </style>
+</head>
+<body>
+
+  <!-- Navigation bar -->
+  <nav>
+    <ul>
+      <li class="brand">
+        <a href="index.html">
+        <img src="images/Screensho.png" alt="Spotify" />
+        </a>
+      </li>
+      <li>
+        <a class="nav__link" href="index.html">Home</a>
+      </li>
+      <li>
+        <a class="nav__link" href="Explore.html">Explore</a>
+      </li>
+      <li>
+        <a class="nav__link" href="about.html">About</a>
+      </li>
+    <li>
+    <div class="search">
+      <input id="searchInput" class="srch" type="search" name="" placeholder="Search Here" onclick="toggleDropdown()">
+      <i class="dropdown-icon ion-chevron-down" onclick="toggleDropdown()"></i>
+      <div id="dropdown" class="dropdown-content">
+          <a href="#" onclick="playSong('1.mp3')">Rakesh Chaurasiya</a>
+          <a href="#" onclick="playSong('2.mp3')">Pandit Ravi Shankar</a>
+          <a href="#" onclick="playSong('3.mp3')">Sitar and Sarod duet</a>
+          <a href="#" onclick="playSong('4.mp3')">Tabla Taal</a>
+          <a href="#" onclick="playSong('5.mp3')">Raag Bhairawa</a>
+      </div>
+     
+      <button type="submit"><i class="fa fa-search" onclick="searchSong()"></i></button>
+     </div>
+  <audio id="audioPlayer" controls style="display: none;">
+    <source id="audioSource" src="" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+    </li>
+    <li>
+      <div class="login">
+        <a href="login.html"> <button class="butn">Login</button></a>
+        
+
+    </div>
+    </li>
+    </ul>
+  </nav>
+  
+  <!-- Video element for background -->
+  <div class="background-photo">
+    <!-- Content goes here -->
+</div>
+  <div class="centered-quote">
+    <p>"Immerse in the harmony,<br> where every beat tells a story."</p>
+  </div>
+
+  <!-- Music player at the bottom -->
+  <div class="bottom">
+    <div class="slider_container">
+      <div class="current-time">00:00</div>
+      <input
+        type="range"
+        name="range"
+        id="myProgressBar"
+        value="0"
+        min="0"
+        max="100"
+      />
+      <div class="total-duration">00:00</div>
+    </div>
+    <div class="icons">
+      <i class="fa-solid fa-2x fa-backward" id="previous"></i>
+      <i class="fa-solid fa-2x fa-circle-play" id="masterPlay"></i>
+      <i class="fa-solid fa-2x fa-forward" id="next"></i>
+    </div>
+    <div class="songInfo">
+      <img src="GIFs/playing.gif" id="gif" alt="" width="42px" />
+      <span id="masterSongName">Raag Malhaar</span>
+    </div>
+  </div>
+
+  <script src="https://kit.fontawesome.com/bf4140a385.js" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+<script>
+  function toggleDropdown() {
+var dropdown = document.getElementById("dropdown");
+dropdown.classList.toggle("show");
+}
+
+function playSong(songURL) {
+var audioPlayer = document.getElementById('audioPlayer');
+var audioSource = document.getElementById('audioSource');
+
+// Set the source of the audio element to the selected song
+audioSource.src = songURL;
+
+// Load and play the selected song
+audioPlayer.load();
+audioPlayer.play();
+}
+
+function searchSong() {
+// Code to execute when the search button is clicked
+var searchTerm = document.getElementById("searchInput").value;
+var songPath = searchTerm + ".mp3"; // Assuming the songs are in the same directory
+
+// Play the selected song
+playSong(songPath);
+}
+
+
+</script>
+
+<script
+src="https://kit.fontawesome.com/bf4140a385.js"
+crossorigin="anonymous"
+></script>
+<script src="script.js"></script>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sangeetkar
+    </title>
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="icon" href="img/favicon.png" />
+
+    <link rel="icon" type="image/png" href="images/logo.png"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="" />
+
+    <meta property="og:title" content="40π - A Spotify Clone" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:image" content="" />
+
+    <meta name="twitter:card" content="" />
+    <meta name="twitter:site" content="" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:description" content="" />
+    <meta name="twitter:image" content="" />
+    <style>
+       .search {
+    position: relative;
+    display: inline-block;
+    margin: 20px;
+}
+
+.srch {
+  padding: 8px 20px 8px 8px;
+    width: 150px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0; /* Align the dropdown to the right */
+  background-color: #f9f9f9;
+  min-width: 120px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+}
+
+.dropdown-content a:hover {
+    background-color:#c9f7bd;
+}
+
+.show {
+    display: block;
+}
+
+
+
+.btn:hover{
+    color: #000;
+}
+.btn:focus{
+    outline: none;
+}
+
+.srch:focus{
+    outline: none;}
+
+.btn {
+  /* Your existing styles */
+  padding: 10px 10px; /* Adjust padding for button size */
+  background-color: #007bff; /* Default background color */
+  color: #fff; /* Default text color */
+  border: none; /* Remove button border */
+  cursor: pointer; /* Add pointer cursor on hover */
+  transition: background-color 0.3s; /* Add transition for smooth color change */
+
+  /* Shift the button 10 pixels to the left */
+  margin-right: -10px;
+}
+
+.btn:hover {
+  background-color: #0056b3; /* Change background color on hover */
+}
+
+.butn {
+  /* Your existing styles */
+  padding: 10px 20px; /* Adjust padding for button size */
+  background-color: #007bff; /* Default background color */
+  color: #fff; /* Default text color */
+  border: none; /* Remove button border */
+  cursor: pointer; /* Add pointer cursor on hover */
+  transition: background-color 0.3s; /* Add transition for smooth color change */
+
+  /* Shift the button 10 pixels to the left */
+  margin-left: -30px;
+}
+
+.butn:hover {
+  background-color: #0056b3; /* Change background color on hover */
+}
+
+
+    
+  
+    </style>
+  </head>
+  <body>
+    <!-- 40π - A Spotify Clone -->
+
+    <nav>
+      <ul>
+        <li class="brand">
+          <a href="index.html">
+          <img src="images/Screensho.png" alt="Spotify" />
+          </a>
+        </li>
+        <li>
+          <a class="nav__link" href="index.html">Home</a>
+        </li>
+        <li>
+          <a class="nav__link" href="Explore.html">Explore</a>
+        </li>
+        <li>
+          <a class="nav__link" href="about.html">About</a>
+        </li>
+      <li>
+      <div class="search">
+        <input id="searchInput" class="srch" type="search" name="" placeholder="Search Here" onclick="toggleDropdown()">
+        <i class="dropdown-icon ion-chevron-down" onclick="toggleDropdown()"></i>
+        <div id="dropdown" class="dropdown-content">
+            <a href="#" onclick="playSong('1.mp3')">Song 1</a>
+            <a href="#" onclick="playSong('2.mp3')">Song 2</a>
+            <a href="#" onclick="playSong('3.mp3')">Song 3</a>
+            <a href="#" onclick="playSong('4.mp3')">Song 4</a>
+            <a href="#" onclick="playSong('5.mp3')">Song 5</a>
+        </div>
+       
+        <button type="submit"><i class="fa fa-search" onclick="searchSong()"></i></button>
+       </div>
+    <audio id="audioPlayer" controls style="display: none;">
+      <source id="audioSource" src="" type="audio/mpeg">
+      Your browser does not support the audio element.
+  </audio>
+      </li>
+      <li>
+        <div class="login">
+          <a href="login.html"> <button class="butn">Login</button></a>
+          
+  
+      </div>
+      </li>
+      </ul>
+    </nav>
+<div class="container">
+    <div class="right">
+      <div class="songList">
+        <h1>Best of Pandit Shivkumar Sharma </h1>
+        <div class="songItemContainer">
+          <div class="songItem" id="songItem0">
+            <img alt="zkbg" />
+            <span class="songName"></span>
+            <span class="songListPlay">
+              <span class="timestamp"
+                >05:34
+                <i id="0" class="fa-solid songItemPlay fa-circle-play"></i
+              ></span>
+            </span>
+          </div>
+          <div class="songItem" id="songItem1">
+            <img alt="2" />
+            <span class="songName"></span>
+            <span class="songListPlay">
+              <span class="timestamp"
+                >05:34
+                <i id="1" class="fa-solid songItemPlay fa-circle-play"></i
+              ></span>
+            </span>
+          </div>
+          <div class="songItem" id="songItem2">
+            <img alt="3" />
+            <span class="songName"></span>
+            <span class="songListPlay">
+              <span class="timestamp"
+                >05:34
+                <i id="2" class="fa-solid songItemPlay fa-circle-play"></i
+              ></span>
+            </span>
+          </div>
+          <div class="songItem" id="songItem3">
+            <img alt="4" />
+            <span class="songName"></span>
+            <span class="songListPlay">
+              <span class="timestamp"
+                >05:34
+                <i id="3" class="fa-solid songItemPlay fa-circle-play"></i
+              ></span>
+            </span>
+          </div>
+          <div class="songItem" id="songItem4">
+            <img alt="5" />
+            <span class="songName"></span>
+            <span class="songListPlay">
+              <span class="timestamp"
+                >05:34
+                <i id="4" class="fa-solid songItemPlay fa-circle-play"></i
+              ></span>
+            </span>
+          </div>
+          <div class="songItem" id="songItem5">
+            <img alt="6" />
+            <span class="songName"></span>
+            <span class="songListPlay">
+              <span class="timestamp"
+                >05:34
+                <i id="5" class="fa-solid songItemPlay fa-circle-play"></i
+              ></span>
+            </span>
+          </div>
+          <div class="songItem" id="songItem6">
+            <img alt="7" />
+            <span class="songName"></span>
+            <span class="songListPlay">
+              <span class="timestamp"
+                >05:34
+                <i id="6" class="fa-solid songItemPlay fa-circle-play"></i
+              ></span>
+            </span>
+          </div>
+          <div class="songItem" id="songItem7">
+            <img alt="8" />
+            <span class="songName"></span>
+            <span class="songListPlay">
+              <span class="timestamp"
+                >05:34
+                <i id="7" class="fa-solid songItemPlay fa-circle-play"></i
+              ></span>
+            </span>
+          </div>
+          <div class="songItem" id="songItem8">
+            <img alt="9" />
+            <span class="songName"></span>
+            <span class="songListPlay">
+              <span class="timestamp"
+                >05:34
+                <i id="8" class="fa-solid songItemPlay fa-circle-play"></i
+              ></span>
+            </span>
+          </div>
+          <div class="songItem" id="songItem9">
+            <img alt="10" />
+            <span class="songName"></span>
+            <span class="songListPlay">
+              <span class="timestamp"
+                >05:34
+                <i id="9" class="fa-solid songItemPlay fa-circle-play"></i
+              ></span>
+            </span>          
+          </div>
+          <div class="songItem" id="songItem10">
+            <img alt="11" />
+            <span class="songName"></span>
+            <span class="songListPlay">
+              <span class="timestamp"
+                >05:34
+                <i id="10" class="fa-solid songItemPlay fa-circle-play"></i>
+              </span>
+            </span>
+          </div>
+          
+        <div class="songItem" id="songItem11">
+            <img alt="12" />
+            <span class="songName"></span>
+            <span class="songListPlay">
+              <span class="timestamp"
+                >05:34
+                <i id="11" class="fa-solid songItemPlay fa-circle-play"></i>
+             </span>
+          </span>
+        </div>
+     <div class="songItem" id="songItem12">
+          <img alt="13" />
+          <span class="songName"></span>
+          <span class="songListPlay">
+              <span class="timestamp"
+                 >05:34
+                <i id="12" class="fa-solid songItemPlay fa-circle-play"></i>
+          </span>
+          </span>
+     </div>
+    <div class="songItem" id="songItem13">
+      <img alt="14" />
+      <span class="songName"></span>
+      <span class="songListPlay">
+          <span class="timestamp"
+             >05:34
+            <i id="13" class="fa-solid songItemPlay fa-circle-play"></i
+          ></span>
+        </span>
+     </div>
+     
+    </div>
+   
+        
+</div>
+
+      
+  </div>
+      <div class="songBanner"></div>
+      <div class="left">  
+        <img src="shiv.jpeg" alt="Zakir Hussain">
+        <div id="bio">
+            <h2>Pandit Shivkumar Sharma - Biography</h2>
+            <p>
+              Pandit Shivkumar Sharma (13 January 1938 – 10 May 2022) was an Indian classical musician and santoor player who is credited with adapting the santoor for Indian classical music.[2][3][4] As a music composer, he collaborated with Indian flautist Hariprasad Chaurasia under the collaborative name Shiv–Hari and composed music for such hit Indian films as Faasle (1985), Chandni (1989), and Lamhe (1991).
+            
+            </p>
+        </div>
+          
+
+        </div> 
+   
+    </div>
+    
+
+    <div class="bottom">
+
+      <div class="slider_container">
+
+        <div class="current-time">00:00</div>
+        <input
+          type="range"
+          name="range"
+          id="myProgressBar"
+          value="0"
+          min="0"
+          max="100"
+        />
+        
+        <div class="total-duration">00:00</div>
+        
+      </div>
+      
+      <div class="icons">
+        
+        <i class="fa-solid fa-2x fa-backward" id="previous"></i>
+        <i class="fa-solid fa-2x fa-circle-play" id="masterPlay"></i>
+        <i class="fa-solid fa-2x fa-forward" id="next"></i>
+      </div>
+      <div class="songInfo">
+        <img src="GIFs/playing.gif" id="gif" alt="" width="42px" />
+        <span id="masterSongName">Apna Time Nhi Dorr Aayega</span>
+      </div>
+    </div>
+
+    <script
+      src="https://kit.fontawesome.com/bf4140a385.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js"></script>
+  </body>
+</html>

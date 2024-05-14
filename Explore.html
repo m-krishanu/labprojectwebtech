@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="icon" type="image/png" href="images/logo.png"/>
+  <link rel="icon" href="img/favicon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="" />
+  <meta property="og:title" content="40π - A Spotify Clone" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="" />
+  <meta property="og:description" content="" />
+  <meta property="og:image" content="" />
+  <meta name="twitter:card" content="" />
+  <meta name="twitter:site" content="" />
+  <meta name="twitter:title" content="" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:image" content="" />
+  <title>Music Browse Page</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      
+    }
+   
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around; /* Adjusted spacing between containers */
+      margin-top: 10px; /* Add top margin to move it below from the top */
+      margin-left: -10px; /* Remove margin from left side */
+      margin-right: -10px; /* Remove margin from right side */
+    }
+
+    .containers {
+  width: calc(19% - 20px); /* Subtract margin from container width */
+  height: 40vh; /* Each container covers 15% of the viewport height */
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 47%; /* Make the border-radius 50% to create a circle */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-left: 10px; /* Add margin to each container */
+  margin-right: 10px; /* Add margin to each container */
+  overflow: hidden; /* Clip the content that exceeds the container */
+  position: relative; /* Position the image relative to the container */
+}
+
+.containers img {
+  position: absolute; /* Position the image absolutely within the container */
+  top: 55%; /* Align the top of the image to the middle of the container */
+  left: 55%; /* Align the left of the image to the middle of the container */
+  transform: translate(-50%, -50%); /* Center the image both horizontally and vertically */
+  width: 405px; /* Ensure the image covers the entire width of the container */
+  height: 300px; /* Allow the image height to adjust */
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+  border-radius:50% ; /* Make the image circular */
+}
+.containers1 {
+  width: calc(19% - 20px); /* Subtract margin from container width */
+  height: 40vh; /* Each container covers 15% of the viewport height */
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 47%; /* Make the border-radius 50% to create a circle */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-left: 10px; /* Add margin to each container */
+  margin-right: 10px; /* Add margin to each container */
+  overflow: hidden; /* Clip the content that exceeds the container */
+  position: relative; /* Position the image relative to the container */
+}
+
+.containers1 img {
+  position: absolute; /* Position the image absolutely within the container */
+  top: 55%; /* Align the top of the image to the middle of the container */
+  left: 62%; /* Align the left of the image to the middle of the container */
+  transform: translate(-50%, -50%); /* Center the image both horizontally and vertically */
+  width: 405px; /* Ensure the image covers the entire width of the container */
+  height: 300px; /* Allow the image height to adjust */
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+  border-radius:50% ; /* Make the image circular */
+}
+
+
+    .artist-name {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    .bottom {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+      color: #fff; /* Text color */
+      padding: 10px; /* Padding for content */
+      box-sizing: border-box; /* Include padding in element width */
+      z-index: 1; /* Ensure bottom section is above the video */
+    }
+    .pop:hover {
+  transform: scale(1.1); /* Optional: Keep the original scaling effect */
+  filter: brightness(70%) grayscale(70%); /* Adjust the values to your preference */
+}
+.search {
+    position: relative;
+    display: inline-block;
+    margin: 20px;
+}
+
+.srch {
+  padding: 8px 20px 8px 8px;
+    width: 150px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0; /* Align the dropdown to the right */
+  background-color: #f9f9f9;
+  min-width: 120px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+}
+
+.dropdown-content a:hover {
+    background-color:#c9f7bd;
+}
+
+.show {
+    display: block;
+}
+
+
+
+.btn:hover{
+    color: #000;
+}
+.btn:focus{
+    outline: none;
+}
+
+.srch:focus{
+    outline: none;}
+
+.btn {
+  /* Your existing styles */
+  padding: 10px 10px; /* Adjust padding for button size */
+  background-color: #007bff; /* Default background color */
+  color: #fff; /* Default text color */
+  border: none; /* Remove button border */
+  cursor: pointer; /* Add pointer cursor on hover */
+  transition: background-color 0.3s; /* Add transition for smooth color change */
+
+  /* Shift the button 10 pixels to the left */
+  margin-right: -10px;
+}
+
+.btn:hover {
+  background-color: #0056b3; /* Change background color on hover */
+}
+
+.butn {
+  /* Your existing styles */
+  padding: 10px 20px; /* Adjust padding for button size */
+  background-color: #007bff; /* Default background color */
+  color: #fff; /* Default text color */
+  border: none; /* Remove button border */
+  cursor: pointer; /* Add pointer cursor on hover */
+  transition: background-color 0.3s; /* Add transition for smooth color change */
+
+  /* Shift the button 10 pixels to the left */
+  margin-left: -30px;
+}
+
+.butn:hover {
+  background-color: #0056b3; /* Change background color on hover */
+}
+
+
+    
+  </style>
+  </style>
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li class="brand">
+        <a href="index.html">
+        <img src="images/Screensho.png" alt="Spotify" />
+        </a>
+      </li>
+      <li>
+        <a class="nav__link" href="index.html">Home</a>
+      </li>
+      <li>
+        <a class="nav__link" href="Explore.html">Explore</a>
+      </li>
+      <li>
+        <a class="nav__link" href="about.html">About</a>
+      </li>
+    <li>
+    <div class="search">
+      <input id="searchInput" class="srch" type="search" name="" placeholder="Search Here" onclick="toggleDropdown()">
+      <i class="dropdown-icon ion-chevron-down" onclick="toggleDropdown()"></i>
+      <div id="dropdown" class="dropdown-content">
+          <a href="#" onclick="playSong('1.mp3')">Song 1</a>
+          <a href="#" onclick="playSong('2.mp3')">Song 2</a>
+          <a href="#" onclick="playSong('3.mp3')">Song 3</a>
+          <a href="#" onclick="playSong('4.mp3')">Song 4</a>
+          <a href="#" onclick="playSong('5.mp3')">Song 5</a>
+      </div>
+     
+      <button type="submit"><i class="fa fa-search" onclick="searchSong()"></i></button>
+     </div>
+  <audio id="audioPlayer" controls style="display: none;">
+    <source id="audioSource" src="" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+    </li>
+    <li>
+      <div class="login">
+        <a href="login.html"> <button class="butn">Login</button></a>
+        
+
+    </div>
+    </li>
+    </ul>
+  </nav>
+
+  <h1>ARTISTS</h1>
+
+  <div class="row">
+    <div class="containers1">
+      <a href="indexkicopy.html">
+         <img src="kaushiki.jpeg" alt="Artist 1"> 
+      </a>
+      <br> <!-- New line -->
+      Artist 1
+    </div> 
+    
+    
+  
+    <div class="containers">
+      <a href="2.html">
+         <img src="zakir.jpeg" alt="Artist 1"> 
+        
+      </a>
+      <div class="artist-name">Artist 1</div>
+    </div> 
+    <div class="containers">
+      <a href="3.html">
+        <img src="ravi.jpeg" alt="Artist 1">
+      </a>
+      <div class="artist-name">Artist 1</div>
+    </div>
+    <div class="containers">
+      <a href="4.html">
+        <img src="shiv.jpeg" alt="Artist 1">
+      </a>
+      <div class="artist-name">Artist 1</div>
+    </div>
+    <!-- Repeat for the next 4 artists -->
+
+  </div>
+
+  <div class="row">
+    <div class="containers">
+      <a href="5.html">
+        <img src="shju.jpeg" alt="Artist 1">
+      </a>
+      <div class="artist-name">Artist 1</div>
+    </div>
+    <div class="containers">
+      <a href="6.html">
+        <img src="anoushka.jpeg" alt="Artist 1">
+      </a>
+      <div class="artist-name">Artist 1</div>
+    </div>
+    <div class="containers">
+      <a href="7.html">
+        <img src="rakesh.jpeg" alt="Artist 1">
+      </a>
+      <div class="artist-name">Artist 1</div>
+    </div>
+    <div class="containers">
+      <a href="8.html">
+        <img src="sarod.jpeg" alt="Artist 1">
+      </a>
+      <div class="artist-name">Artist 1</div>
+    </div>
+    <!-- Repeat for the next 4 artists -->
+  </div>
+  <div class="bottom">
+    <div class="slider_container">
+      <div class="current-time">00:00</div>
+      <input
+        type="range"
+        name="range"
+        id="myProgressBar"
+        value="0"
+        min="0"
+        max="100"
+      />
+      <div class="total-duration">00:00</div>
+    </div>
+    <div class="icons">
+      <i class="fa-solid fa-2x fa-backward" id="previous"></i>
+      <i class="fa-solid fa-2x fa-circle-play" id="masterPlay"></i>
+      <i class="fa-solid fa-2x fa-forward" id="next"></i>
+    </div>
+    <div class="songInfo">
+      <img src="GIFs/playing.gif" id="gif" alt="" width="42px" />
+      <span id="masterSongName">Apna Time Nhi Dorr Aayega</span>
+    </div>
+  </div>
+
+  <script src="https://kit.fontawesome.com/bf4140a385.js" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+</html>
